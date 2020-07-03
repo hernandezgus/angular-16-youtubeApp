@@ -15,6 +15,10 @@ export class HomeComponent implements OnInit {
   constructor( private youtubeService: YoutubeService) { }
 
   ngOnInit(): void {
+    this.cargarVideos();
+  }
+
+  cargarVideos() {
     this.youtubeService.getVideos().subscribe(resp => {
         console.log(resp);
         this.videos.push( ...resp );
@@ -24,14 +28,15 @@ export class HomeComponent implements OnInit {
   mostrarVideo( video: Video ) {
     console.log(video);
     Swal.fire({ html: `
-    <h4>${ video.title }</h4>
-    <hr>
-    <iframe
-      width="100%"
-      height="315"
-      src="https://www.youtube.com/embed/${ video.resourceId.videoId }"
-      frameborder="0"
-      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-      </iframe>`});
+      <h4>${ video.title }</h4>
+      <hr>
+      <iframe
+        width="100%"
+        height="315"
+        src="https://www.youtube.com/embed/${ video.resourceId.videoId }"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+      </iframe>
+    `});
   }
 }
