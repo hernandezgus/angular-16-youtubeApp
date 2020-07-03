@@ -20,13 +20,13 @@ export class HomeComponent implements OnInit {
 
   cargarVideos() {
     this.youtubeService.getVideos().subscribe(resp => {
-        console.log(resp);
+        // console.log(resp);
         this.videos.push( ...resp );
       });
   }
 
   mostrarVideo( video: Video ) {
-    console.log(video);
+    // console.log(video);
     Swal.fire({ html: `
       <h4>${ video.title }</h4>
       <hr>
